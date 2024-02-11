@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    #update-message {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Update in progress</h1>
+  <p id="update-message"></p>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const updateMessage = document.getElementById('update-message');
+
+      // Listen for update messages from the main process
+      window.api.receive('update-message', (message) => {
+        updateMessage.innerText = message;
+      });
+    });
+  </script>
+</body>
+</html>
